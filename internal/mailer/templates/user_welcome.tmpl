@@ -1,0 +1,42 @@
+{{/* Filename: test2/internal/mailer/templates/user_welcome.tmpl */}}
+{{ define "subject" }}Welcome to Myreference!{{ end }}
+{{ define "plainBody" }}
+Hi,
+
+Thank you for signing up for a Myreference account!
+We are happy you decided to you utilize our service!
+For future refernce, please note that your ID number
+is {{ .userID }}.
+
+Please send a request to the `PUT /v1/users/activated` endpoint with the following
+JSON body to activate your account:
+{"token":"{{.activationToken}}"}
+
+Thanks,
+
+The Myreference team
+{{ end }}
+
+{{ define "htmlBody" }}
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" context="width=device-width"/>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    </head>
+    <body>
+        <p>Hi,</p>
+        <p>Thank you for signing up for a Myreference account!</p>
+        <p>We are happy you decided to you utilize our service!</p>
+        <p>For future refernce, please note that your ID number</p>
+        <p>is {{ .userID }}.</p>
+
+        <p>Please send a request to the `PUT /v1/users/activated` endpoint with the following</p>
+        <p>JSON body to activate your account:</p>
+        <pre><code>{"token":"{{.activationToken}}"}</code></pre>
+
+        <p>Thanks,</p>
+        <p>The Myreference team</p>
+    </body>
+</html>
+{{ end }}
